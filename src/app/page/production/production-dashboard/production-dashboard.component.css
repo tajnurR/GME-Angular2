@@ -1,0 +1,12 @@
+.dashboard_order_list{
+    margin-bottom: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    transition: 0.2ms all ease;
+}
+
+.dashboard_order_list:hover{
+    margin-bottom: 10px;
+    background-color: rgb(138, 149, 248);
+    color: azure;
+}

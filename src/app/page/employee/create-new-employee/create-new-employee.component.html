@@ -1,0 +1,304 @@
+<!-- <script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#dpetl').change(function () {
+            // alert($("#cars").val())
+            var stateId = $("#dpetl").val();
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8181/designation/' + stateId,
+                data: "json",
+                contentType: "application/json",
+                success: function (result) {
+                    var result = JSON.parse(result);
+
+                    var s = '';
+                    for (var i = 0; i < result.length; i++) {
+
+                        s += '<option value="' + result[i].desgi_id + '">' + result[i].desgi_title + '</option>';
+                    }
+                    $('#desigf').html(s);
+                }
+            });
+        });
+
+    });
+
+
+</script> -->
+
+
+<main id="main" class="main">
+
+
+    <!-- New Employee Form  -->
+    <div class="col-12">
+        <div class="card recent-sales overflow-auto">
+
+
+            <div class="card-body">
+                <h5 class="card-title"> Create New Employee </h5>
+
+                <section class="section">
+                    <div class="row">
+                        <div class="col-lg-10 ">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Fillup Necessary Field For Add New Employee</h5>
+
+                                    <!-- Employee Necessary Form Elements -->
+                                    <form (ngSubmit)="addNewEmp()" #employeeForm="ngForm">
+
+                                        <!-- <div class="row mb-3">
+                                            <label class="col-sm-3 col-form-label">Emp ID</label>
+                                            <div class="col-sm-9">
+                                                <input type="hidden" class="form-control"
+                                                    value="DEP-GRADE-Year-SerialNo " disabled >
+                                                Example = eng-10-23-05 // Engineering Depratment Join in 2023 as 5th Employee
+                                            </div>
+                                        </div> -->
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-3 col-form-label">Employee ID</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" value="DEP-GRADE-Year-SerialNo "
+                                                    name="em_employeeID" ngModel>
+                                                <!-- Example = eng-10-23-05 // Engineering Depratment Join in 2023 as 5th Employee -->
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row mb-3">
+                                            <label for="inputText" class="col-sm-3 col-form-label">Employee
+                                                Name </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" id="inputText" name="em_name"
+                                                    ngModel>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="inputText" class="col-sm-3 col-form-label">Father's
+                                                Name </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="em_fatherName" ngModel>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row mb-3">
+                                            <label for="inputNumber" class="col-sm-3 col-form-label">National ID
+                                                No</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" name="em_nid" ngModel>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="inputNumber" class="col-sm-3 col-form-label">Phone
+                                                Number</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="inputNumber" class="form-control" name="em_phone"
+                                                    ngModel>
+                                            </div>
+                                        </div>
+
+                                       
+
+                                        <fieldset class="row mb-3">
+                                            <legend class="col-form-label col-sm-3 pt-0">Gender</legend>
+                                            <div class="col-sm-9">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="gridRadios"
+                                                        id="gridRadios1" value="Male" checked name="em_gender" ngModel>
+                                                    <label class="form-check-label" for="gridRadios1">
+                                                        Male
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="gridRadios"
+                                                        id="gridRadios2" value="Female" name="em_gender" ngModel>
+                                                    <label class="form-check-label" for="gridRadios2">
+                                                        Female
+                                                    </label>
+                                                </div>
+                                               
+                                            </div>
+                                        </fieldset>
+
+                                        <div class="row mb-3">
+                                            <label for="inputDate" class="col-sm-3 col-form-label">Date Of Birth</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" id="inputDate" class="form-control" name="em_dob"
+                                                    ngModel>
+                                            </div>
+                                        </div>
+
+                                        <fieldset class="row mb-3">
+                                            <legend class="col-form-label col-sm-3 pt-0">Relationship Status</legend>
+                                            <div class="col-sm-9">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" 
+                                                        id="single" value="Single" checked name="em_relationshipStatus"
+                                                    ngModel>
+                                                    <label class="form-check-label" for="single">
+                                                        Single
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" 
+                                                        id="married" value="Married" name="em_relationshipStatus"
+                                                    ngModel>
+                                                    <label class="form-check-label" for="married">
+                                                        Married
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+
+                                        <div class="row mb-3">
+                                            <label for="inputText" class="col-sm-3 col-form-label"> If Married (Spouse
+                                                Name) </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="em_spouseName"
+                                                    ngModel>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="inputText" class="col-sm-3 col-form-label">Spouse NID </label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" name="em_spouseNID"
+                                                    ngModel>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="inputNumber" class="col-sm-3 col-form-label">Previous
+                                                Company</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="em_PreviousCompany" ngModel>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="inputNumber" class="col-sm-3 col-form-label">Upload
+                                                Image </label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" type="file" id="formdFile" name="em_profileImg"
+                                                    ngModel>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="inputDate" class="col-sm-3 col-form-label">Joining Date</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" class="form-control" name="em_joiningDate" ngModel>
+                                            </div>
+                                        </div>
+
+                                        <!--                                        <div class="row mb-3">-->
+                                        <!--                                            <label for="inputNumber" class="col-sm-3 col-form-label">Upload-->
+                                        <!--                                                Signature </label>-->
+                                        <!--                                            <div class="col-sm-9">-->
+                                        <!--                                                <input class="form-control" type="file" id="formFile" name="simg">-->
+                                        <!--                                            </div>-->
+                                        <!--                                        </div>-->
+
+                                        <div class="row mb-3">
+                                            <label for="inputPassword" class="col-sm-3 col-form-label">Present
+                                                Address</label>
+                                            <div class="col-sm-9">
+                                                <textarea class="form-control" id="inputPassword"
+                                                    style="height: 100px" name="em_resentAddress"
+                                                    ngModel></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="inputPassword" class="col-sm-3 col-form-label">Permanent
+                                                Address</label>
+                                            <div class="col-sm-9">
+                                                <textarea class="form-control" style="height: 100px" name="em_permanentAddress"
+                                                    ngModel></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-3 col-form-label">Department</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-select" id="dpetl" name="dep_id"
+                                                    ngModel>
+                                                <option *ngFor="let dp of dept" value="{{dp.dep_id}}">
+                                                    {{dp.dep_name}}</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-3 col-form-label">Designation Title </label>
+                                            <div class="col-sm-9">
+                                                <select class="form-select" id="desigf" name="desgi_id"
+                                                    ngModel>
+                                                    <option *ngFor="let dpes of desig" value="{{dpes.desgi_id}}">
+                                                        {{dpes.desgi_title}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <!--                                        <div class="row mb-3">-->
+                                        <!--                                            <label class="col-sm-3 col-form-label">Salary Grade</label>-->
+                                        <!--                                            <div class="col-sm-9">-->
+                                        <!--                                                <select class="form-select" aria-label="Default select example" th:field="*{saleyGrade}">-->
+                                        <!--                                                    <option  th:each="s:${salaryList}"  th:value="${s.sg_id}"-->
+                                        <!--                                                             th:text="${s.sg_name}" >Select Grade</option>-->
+
+
+                                        <!--                                                </select>-->
+                                        <!--                                            </div>-->
+                                        <!--                                        </div>-->
+
+                                        <div class="row mb-3">
+                                            <label for="inputEmail" class="col-sm-3 col-form-label">Email (If
+                                                Any)</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" id="inputEmail" class="form-control" name="em_email"
+                                                    ngModel>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+                                            <div class="col-sm-9">
+                                                <input type="password" class="form-control" name="em_password" ngModel>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-sm-9">
+                                                <button type="submit" class="btn btn-primary">Add in Total Employee
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </form><!-- End General Form Elements -->
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+
+
+            </div>
+
+        </div>
+    </div><!-- End Recent Sales -->
+
+
+</main><!-- End #main -->

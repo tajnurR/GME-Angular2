@@ -1,0 +1,314 @@
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1> Admin Dashboard </h1>
+
+  </div><!-- End Page Title -->
+
+  <section class="section profile">
+    <div class="row">
+      <div class="col-xl-3 card">
+        <div class="p-2">
+
+          <div class="">
+            <form action="">
+              <div class=" mb-3">
+                <label class="fw-bolder "> Filter by </label>
+                <div class="">
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected> All Order</option>
+                    <option value="#"> On Process</option>
+                    <option value="#"> Completed</option>
+
+                  </select>
+                </div>
+              </div>
+
+            </form>
+
+
+            <h3> List of Order </h3>
+
+            <div class="p-1 dashboard_order_list" *ngFor="let o of order">
+              <div (click)="onChangeOrder(o.coid)">
+                <h5 class=" "> Order ID : <span class="fw-bolder">{{o.oder_title}} </span></h5>
+                <div class=" " *ngIf="o.orderStatus == 1"> Status : <span class="badge bg-info">New</span></div>
+                <div class=" " *ngIf="o.orderStatus == 2"> Status : <span class="badge bg-primary">On Working</span>
+                </div>
+                <div class=" " *ngIf="o.orderStatus == 3"> Status : <span class="badge bg-danger">Cancelled</span></div>
+                <div class=" " *ngIf="o.orderStatus == 4"> Status : <span class="badge bg-success">Successfully Complete</span></div>
+              </div>
+            </div>
+
+
+          </div>  <!--    -->
+
+        </div> <!-- card -->
+
+      </div>    <!--  col-xl-3 card  -->
+
+      <!--      View Order Details Start -->
+      <div class="col-xl-6 " *ngIf="checka">
+        <div class="card p-2">
+          <div class="">
+            <div class="pt-2">
+
+              <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                <h5 class="card-title">Oder Details</h5>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Order Title</div>
+                  <div class="col-lg-9 col-md-8">{{odderView.order_d_type}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Dress types</div>
+                  <div class="col-lg-9 col-md-8">{{odderView.order_d_type}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Order Current Status</div>
+                  <div class="col-lg-6 col-md-6" *ngIf="odderView.orderStatus == 3"><span class="badge bg-success">Complete</span>
+                  </div>
+                  <div class="col-lg-6 col-md-6" *ngIf="odderView.orderStatus == 1"><span
+                    class="badge bg-info">New</span></div>
+                  <div class="col-lg-6 col-md-6" *ngIf="odderView.orderStatus == 2"><span class="badge bg-primary">On Working</span>
+                  </div>
+                  <div class="col-lg-6 col-md-6" *ngIf="odderView.orderStatus == 0"><span class="badge bg-danger">Cancelled</span>
+                  </div>
+                  <div class="col-lg-6 col-md-6" *ngIf="odderView.orderStatus == 4"><span class="badge bg-success">Successfully Complete</span>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Dress for</div>
+                  <div class="col-lg-9 col-md-8">{{odderView.order_d_for}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Dress Size Details</div>
+                  <div class="col-lg-9 col-md-8">{{odderView.oder_size}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Dress Color Details</div>
+                  <div class="col-lg-9 col-md-8">{{odderView.oder_color}}</div>
+                </div>
+
+
+                <div class="row mb-3">
+                  <div class="">
+                    <button type="button" class="btn btn-primary" *ngIf="odderView.orderStatus == 1 "
+                            (click)="assingDept(odderView.coid)"> Accept Order
+                    </button>
+                    <div *ngIf="odderView.orderStatus == 2 && odps.inv_Delivary_status != 2" class="alert alert-info"
+                         role="alert">
+                      Order is processing -- Wait for Delievery
+                    </div>
+                    <button type="button" class="btn m-4 btn-primary" *ngIf="odderView.orderStatus == 1 && odps.inv_Delivary_status != 2"> Discard Order
+                    </button>
+                    <button type="button" class="btn m-4 btn-primary" *ngIf="odderView.orderStatus == 0"> Start Again
+                    </button>
+
+                    <button type="button" class="btn m-4 btn-primary" *ngIf="odps.inv_Delivary_status == 2"
+                            (click)="assingDept(odderView.coid)"> Accept delivery
+                    </button>
+
+                  </div>
+                </div>
+              </div>
+
+
+            </div><!-- End Bordered Tabs -->
+
+          </div>
+        </div>
+
+      </div>
+
+      <!--      View Order Details End -->
+
+      <!--      Department Startes Start -->
+            <div *ngIf="checkdept" class="col-xl-3 card" style="font-size:14px">
+
+              <div class="card">
+                <div  class="card-body">
+                  <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+                  <div class="activity">
+
+                    <div class="activity-item d-flex" *ngIf="odps.inv_status >= 2">
+                      <i class='bi bi-circle-fill activity-badge  align-self-start'></i>
+                      <div style="padding-left: 10px; width: 100%;">
+                        <div class="activity-content"
+                             style="background-color: rgba(139, 255, 152, 0.4); color: #000000; border: 1px solid rgba(139, 255, 152, 0.90); border-radius: 5px; padding-left: 5px">
+                          <h5>Production Requisition</h5>
+                          Order Start: {{odps.productionRequisition.pdR_startDate}} <br>
+                          Order Delivared: {{odps.productionRequisition.pdR_deliverydate}} <br>
+                          <p *ngIf="odps.productionRequisition.pdR_status == 1">Status: On Working</p>
+                          <p *ngIf="odps.productionRequisition.pdR_status == 2">Status: Delivered</p>
+                          <p *ngIf="odps.productionRequisition.pdR_status == 3">Status: Complete</p>
+                          <p *ngIf="odps.productionRequisition.pdR_status == 4">Status: Rejected</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <br>
+                    <div class="activity-item d-flex" *ngIf="odps.inv_status >= 3">
+                      <!--                  <div class="activite-label">32 min</div>-->
+                      <i class='bi bi-circle-fill activity-badge align-self-start'></i>
+                      <div style="padding-left: 10px; width: 100%;">
+                        <div class="activity-content"
+                             style="background-color: rgba(139, 255, 152, 0.4); color: #000000; border: 1px solid rgba(139, 255, 152, 0.90); border-radius: 5px; padding-left: 5px">
+                          <h5>Cutting Department</h5>
+                          Order Start: {{odps.cuttingDepartment.cuD_startDate}} <br>
+                          Order Delivared: {{odps.cuttingDepartment.cuD_deliverydate}} <br>
+                          <p *ngIf="odps.cuttingDepartment.cuD_status == 1">Status: On Working</p>
+                          <p *ngIf="odps.cuttingDepartment.cuD_status == 2">Status: Delivered</p>
+                          <p *ngIf="odps.cuttingDepartment.cuD_status == 3">Status: Complete</p>
+                          <p *ngIf="odps.cuttingDepartment.cuD_status == 4">Status: Rejected</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <br>
+                    <div class="activity-item d-flex" *ngIf="odps.inv_status >= 4">
+                      <!--                  <div class="activite-label">32 min</div>-->
+                      <i class='bi bi-circle-fill activity-badge align-self-start'></i>
+                      <div style="padding-left: 10px; width: 100%;">
+                        <div class="activity-content"
+                             style="background-color: rgba(139, 255, 152, 0.4); color: #000000; border: 1px solid rgba(139, 255, 152, 0.90); border-radius: 5px; padding-left: 5px">
+                          <h5>Stitching Department</h5>
+                          Order Start: {{odps.stitchingDepartment.stD_startDate}} <br>
+                          Order Delivared: {{odps.stitchingDepartment.stD_deliverydate}} <br>
+                          <p *ngIf="odps.stitchingDepartment.stD_status == 1">Status: On Working</p>
+                          <p *ngIf="odps.stitchingDepartment.stD_status == 2">Status: Delivered</p>
+                          <p *ngIf="odps.stitchingDepartment.stD_status == 3">Status: Complete</p>
+                          <p *ngIf="odps.stitchingDepartment.stD_status == 4">Status: Rejected</p>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <br>
+                    <div class="activity-item d-flex" *ngIf="odps.inv_status >= 5">
+                      <!--                  <div class="activite-label">32 min</div>-->
+                      <i class='bi bi-circle-fill activity-badge align-self-start'></i>
+                      <div style="padding-left: 10px; width: 100%;">
+                        <div class="activity-content"
+                             style="background-color: rgba(139, 255, 152, 0.4); color: #000000; border: 1px solid rgba(139, 255, 152, 0.90); border-radius: 5px; padding-left: 5px">
+                          <h5>Dyeing Department</h5>
+                          Order Start: {{odps.dyeingDepartment.dyD_startDate}} <br>
+                          Order Delivared: {{odps.dyeingDepartment.dyD_deliverydate}} <br>
+                          <p *ngIf="odps.dyeingDepartment.dyD_status == 1">Status: On Working</p>
+                          <p *ngIf="odps.dyeingDepartment.dyD_status == 2">Status: Delivered</p>
+                          <p *ngIf="odps.dyeingDepartment.dyD_status == 3">Status: Complete</p>
+                          <p *ngIf="odps.dyeingDepartment.dyD_status == 4">Status: Rejected</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <br>
+                    <div class="activity-item d-flex" *ngIf="odps.inv_status >= 6">
+                      <!--                  <div class="activite-label">32 min</div>-->
+                      <i class='bi bi-circle-fill activity-badge align-self-start'></i>
+                      <div style="padding-left: 10px; width: 100%;">
+                        <div class="activity-content"
+                             style="background-color: rgba(139, 255, 152, 0.4); color: #000000; border: 1px solid rgba(139, 255, 152, 0.90); border-radius: 5px; padding-left: 5px">
+                          <h5>Washing Department</h5>
+                          Order Start: {{odps.washingDepartment.whD_startDate}} <br>
+                          Order Delivared: {{odps.washingDepartment.whD_deliverydate}} <br>
+                          <p *ngIf="odps.washingDepartment.whD_states == 1">Status: On Working</p>
+                          <p *ngIf="odps.washingDepartment.whD_states == 2">Status: Delivered</p>
+                          <p *ngIf="odps.washingDepartment.whD_states == 3">Status: Complete</p>
+                          <p *ngIf="odps.washingDepartment.whD_states == 4">Status: Rejected</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <br>
+                    <div class="activity-item d-flex" *ngIf="odps.inv_status >= 7">
+                      <!--                  <div class="activite-label">32 min</div>-->
+                      <i class='bi bi-circle-fill activity-badge align-self-start'></i>
+                      <div style="padding-left: 10px; width: 100%;">
+                        <div class="activity-content"
+                             style="background-color: rgba(139, 255, 152, 0.4); color: #000000; border: 1px solid rgba(139, 255, 152, 0.90); border-radius: 5px; padding-left: 5px">
+                          <h5>Quality Control (QC)</h5>
+                          Order Start: {{odps.qualityControlDepartment.qcD_startDate}} <br>
+                          Order Delivared: {{odps.qualityControlDepartment.qcD_deliverydate}} <br>
+                          <p *ngIf="odps.qualityControlDepartment.qcD_status == 1">Status: On Working</p>
+                          <p *ngIf="odps.qualityControlDepartment.qcD_status == 2">Status: Delivered</p>
+                          <p *ngIf="odps.qualityControlDepartment.qcD_status == 3">Status: Complete</p>
+                          <p *ngIf="odps.qualityControlDepartment.qcD_status == 4">Status: Rejected</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <br>
+                    <div class="activity-item d-flex" *ngIf="odps.inv_status >= 8">
+                      <!--                  <div class="activite-label">32 min</div>-->
+                      <i class='bi bi-circle-fill activity-badge align-self-start'></i>
+                      <div style="padding-left: 10px; width: 100%;">
+                        <div class="activity-content"
+                             style="background-color: rgba(139, 255, 152, 0.4); color: #000000; border: 1px solid rgba(139, 255, 152, 0.90); border-radius: 5px; padding-left: 5px">
+                          <h5>Iron Department</h5>
+                          Order Start: {{odps.ironDepartment.irD_startDate}} <br>
+                          Order Delivared: {{odps.ironDepartment.irD_deliverydate}} <br>
+                          <p *ngIf="odps.ironDepartment.irD_status == 1">Status: On Working</p>
+                          <p *ngIf="odps.ironDepartment.irD_status == 2">Status: Delivered</p>
+                          <p *ngIf="odps.ironDepartment.irD_status == 3">Status: Complete</p>
+                          <p *ngIf="odps.ironDepartment.irD_status == 4">Status: Rejected</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <br>
+                    <div class="activity-item d-flex" *ngIf="odps.inv_status >= 9">
+                      <!--                  <div class="activite-label">32 min</div>-->
+                      <i class='bi bi-circle-fill activity-badge align-self-start'></i>
+                      <div style="padding-left: 10px; width: 100%;">
+                        <div class="activity-content"
+                             style="background-color: rgba(139, 255, 152, 0.4); color: #000000; border: 1px solid rgba(139, 255, 152, 0.90); border-radius: 5px; padding-left: 5px">
+                          <h5>Packaging Department</h5>
+                          Order Start: {{odps.packagingDepartment.pkD_startDate}} <br>
+                          Order Delivared: {{odps.packagingDepartment.pkD_deliverydate}} <br>
+                          <p *ngIf="odps.packagingDepartment.pkd_status == 1">Status: On Working</p>
+                          <p *ngIf="odps.packagingDepartment.pkd_status == 2">Status: Delivered</p>
+                          <p *ngIf="odps.packagingDepartment.pkd_status == 3">Status: Complete</p>
+                          <p *ngIf="odps.packagingDepartment.pkd_status == 4">Status: Rejected</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <br>
+                    <div class="activity-item d-flex" *ngIf="odps.inv_status >= 10">
+                      <!--                  <div class="activite-label">32 min</div>-->
+                      <i class='bi bi-circle-fill activity-badge align-self-start'></i>
+                      <div style="padding-left: 10px; width: 100%;">
+                        <div class="activity-content"
+                             style="background-color: rgba(139, 255, 152, 0.4); color: #000000; border: 1px solid rgba(139, 255, 152, 0.90); border-radius: 5px; padding-left: 5px">
+                          <h5>Inspection Department</h5>
+                          Order Start: {{odps.inspectionOrderShipment.ios_startDate}} <br>
+                          Order Delivared: {{odps.inspectionOrderShipment.ios_deliverydate}} <br>
+                          <p *ngIf="odps.inspectionOrderShipment.ios_status == 1">Status: On Working</p>
+                          <p *ngIf="odps.inspectionOrderShipment.ios_status == 2">Status: Delivered</p>
+                          <p *ngIf="odps.inspectionOrderShipment.ios_status == 3">Status: Complete</p>
+                          <p *ngIf="odps.inspectionOrderShipment.ios_status == 4">Status: Rejected</p>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+      <!--      Department Startes end -->
+
+    </div><!-- End Recent Activity -->
+
+  </section>
+
+</main><!-- End #main -->
+

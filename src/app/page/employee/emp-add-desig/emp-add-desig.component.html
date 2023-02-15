@@ -1,0 +1,80 @@
+<main id="main" class="main">
+    <!-- New Employee Form  -->
+    <div class="col-12">
+        <div class="card recent-sales overflow-auto">
+
+
+            <div class="card-body">
+                <h5 class="card-title"> Set New Designation </h5>
+                <section class="section">
+                    <div class="row">
+                        <div class="col-lg-10 offset-1">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Add Job Designation in Department </h5>
+                                  <div style="background-color: rgba(0,255,0,0.4)" *ngIf="submited">
+                                    <p>Designation Add succsfully</p>
+                                  </div>
+
+                                    <form (ngSubmit)="addNewSG()" #desigForm="ngForm">
+                                        <div class="row mb-3">
+                                            <label for="inpuDepts" class="col-sm-3 col-form-label">Department Name
+                                            </label>
+                                            <div class="col-sm-9">
+                                                <select id="inpuDepts" class="form-control" name="dept" ngModel>
+
+                                                  <option *ngFor="let dp of dept" value="{{dp.dep_id}}"> {{dp.dep_name}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="inputNumber" class="col-sm-3 col-form-label">Post
+                                                Designation</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="inputNumber" class="form-control" name="dgName" ngModel>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="row mb-3">
+                                            <label for="inputdesig" class="col-sm-3 col-form-label">Grade </label>
+                                            <div class="col-sm-9">
+                                                <select id="inputdesig" class="form-control" name="sg" ngModel>
+
+                                                    <option *ngFor="let sg of sgList" value="{{sg.sg_id}}"> {{sg.sg_name}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-sm-9">
+                                                <button type="submit" class="btn btn-primary">Add Designation </button>
+                                            </div>
+                                        </div>
+
+                                    </form><!-- End General Form Elements -->
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div><!-- End Recent Sales -->
+
+
+
+
+
+
+
+
+
+</main><!-- End #main -->

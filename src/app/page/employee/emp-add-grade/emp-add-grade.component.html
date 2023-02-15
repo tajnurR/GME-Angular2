@@ -1,0 +1,129 @@
+<main id="main" class="main">
+    <!-- New Employee Form  -->
+    <div class="col-12" >
+        <div class="card recent-sales overflow-auto">
+
+
+            <div class="card-body">
+                <h5 class="card-title">New Salary Grade And List </h5>
+
+                <section class="section">
+                    <div class="row">
+                        <div class="col-lg-10">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Add Grade Based On Salary Range
+                                    </h5>
+                                      <div style="background-color: rgba(0,255,0,0.4)" *ngIf="submited">
+                                          <p>Salary Grade Add succsfully</p>
+                                      </div>
+                                    <!-- New Employee Form Elements -->
+                                    <form (ngSubmit)="saveSG()" #sgForm="ngForm" >
+
+                                        <input type="hidden" class="form-control" name="sg_id" ngModel >
+                                        <div class="row mb-3">
+                                            <label class="col-sm-3 col-form-label">Salary Grade Name</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="sg_name" ngModel>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label class="col-sm-3 col-form-label"> Basic
+                                                Salary </label>
+                                            <div class="col-sm-9">
+                                                <input id="inputTexgt" type="number" class="form-control" name="basicSalary" ngModel>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-sm-9">
+                                                <button type="submit"  class="btn btn-primary">Add Salary Grade</button>
+                                            </div>
+                                        </div>
+
+                                    </form><!-- End General Form Elements -->
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </section>
+
+
+            </div>
+
+        </div>
+     </div>
+
+
+
+<!--     <div class="col-12" *ngIf="id > 0">-->
+<!--        <div class="card recent-sales overflow-auto">-->
+
+
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">Update Salary Grade And List </h5>-->
+
+<!--                <section class="section">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-10">-->
+
+<!--                            <div class="card">-->
+<!--                                <div class="card-body">-->
+<!--                                    <h5 class="card-title">Update Grade Based On Salary Range-->
+<!--                                    </h5>-->
+<!--                                      <div style="background-color: rgba(0,255,0,0.4)" *ngIf="submited">-->
+<!--                                          <p>Update Grade Add succsfully</p>-->
+<!--                                      </div>-->
+<!--                                    &lt;!&ndash; New Employee Form Elements &ndash;&gt;-->
+<!--                                    <form (ngSubmit)="updatex()" >-->
+<!--                                        <input type="hidden" class="form-control" [(ngModel)]="salaryG.sg_id" name="sg_id">-->
+<!--                                        <div class="row mb-3">-->
+<!--                                            <label class="col-sm-3 col-form-label">Salary Grade Name</label>-->
+<!--                                            <div class="col-sm-9">-->
+<!--                                                <input type="text" class="form-control" [(ngModel)]="salaryG.sg_name" name="sg_name">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+
+<!--                                        <div class="row mb-3">-->
+<!--                                            <label for="inputText" class="col-sm-3 col-form-label"> Basic-->
+<!--                                                Salary </label>-->
+<!--                                            <div class="col-sm-9">-->
+<!--                                                <input id="inputText" type="number" class="form-control" [(ngModel)]="salaryG.basicSalary" name="basicSalary">-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+
+<!--                                        <div class="row mb-3">-->
+<!--                                            <div class="col-sm-9">-->
+<!--                                                <button type="submit"  class="btn btn-primary">Add Salary Grade</button>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+
+<!--                                    </form>&lt;!&ndash; End General Form Elements &ndash;&gt;-->
+
+<!--                                </div>-->
+
+
+<!--                            </div>-->
+
+
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </section>-->
+
+
+<!--            </div>-->
+
+<!--        </div>-->
+<!--     </div>-->
+
+
+</main><!-- End #main -->

@@ -1,0 +1,109 @@
+<main id="main" class="main">
+
+    <div class="container">
+        <div class="row">
+            <!-- New Department Table-->
+            <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"> List Of Salary </h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> # </th>
+                                    <th> Grade Name</th>
+                                    <th> Basic Salary</th>
+                                    <th> House Rent</th>
+                                    <th> Health Allowance</th>
+                                    <th> Total Salary</th>
+                                    <th> Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let sg of salaryGList; index as i;">
+                                    <th>{{i+1}}</th>
+                                    <th>{{sg.sg_name}}</th>
+                                    <th>{{sg.basicSalary}}</th>
+                                    <th>{{sg.houseRant}}</th>
+                                    <th>{{sg.healthRant}}</th>
+                                    <th>{{sg.totalSalary}}</th>
+                                    <td>
+                                        <a class="btn btn-danger" (click)="deleteByID(sg.sg_id)">Delete</a>
+                                        <a class="btn btn-warning" (click)="updateSgRequers(sg.sg_id)">Update</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-12">
+               <div class="row">
+                <div class="col-6"><div class="card recent-sales overflow-auto">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"> List Of Designation </h5>
+                        <!-- New Salary Grade Form Elements -->
+                        <table class="table">
+                            <thead>
+                               <tr>
+                                <th> ID </th>
+                                <th> Title </th>
+                                <th> Department </th>
+                                <th> Salary Grade </th>
+                                <th> Action </th>
+                               </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let desi of desig ">
+                                    <th>{{desi.desgi_id}}</th>
+                                    <th>{{desi.desgi_title}}</th>
+                                    <th>{{desi.department}}</th>
+                                    <td> {{desi.salaryGrade}}</td>
+                                    <td></td>
+                                    <td>
+                                        <a class="btn btn-danger">Delete</a>
+                                        <a class="btn btn-warning">Update</a>
+                                    </td>
+                                </tr>
+                        </table>
+
+                    </div>
+
+                </div></div>
+                <div class="col-6"><div class="card recent-sales overflow-auto">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"> List Of Department </h5>
+                        <!-- New Salary Grade Form Elements -->
+                        <table class="table">
+                            <thead>
+                                <th > Name </th>
+                                <th> Short Name </th>
+                                <th> Action </th>
+
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let dep of depList ">
+                                <th>{{dep.dep_id}}</th>
+                                <th>{{dep.dep_name}}</th>
+                                <td> {{dep.dep_SortName}}</td>
+                                <td></td>
+                                <td>
+                                    <a class="btn btn-danger" >Delete</a>
+                                    <a class="btn btn-warning">Update</a>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </div></div>
+               </div>
+            </div>
+        </div><!-- End Salary Table -->
+        <!-- New Department Table-->
+
+    </div>
+</main><!-- End #main -->

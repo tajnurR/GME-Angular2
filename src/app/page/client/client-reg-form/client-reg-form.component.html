@@ -1,0 +1,101 @@
+
+
+<main id="main" class="main">
+
+    <!-- Client Registration Form -->
+    <div class="col-12">
+        <div class="card">
+
+            <div class="card-body">
+              <section class="section">
+                    <div class="row">
+                        <div class="col-lg-10 offset-1 mt-4">
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Customar Registration Form</h5>
+                              <div style="background-color: rgba(0,255,0,0.4)" *ngIf="submited">
+                                <p>New Customar add succsfully</p>
+                              </div>
+                              <!-- No Labels Form -->
+                              <form class="row g-3" (ngSubmit)="addNewClient()" enctype="multipart/form-data" #clientForm = "ngForm">
+                                <div class="col-md-12">
+                                  <input type="text" class="form-control" placeholder="Your Name" name="client_name" ngModel>
+                                </div>
+                                <div class="col-md-6">
+                                  <input type="email" class="form-control" placeholder="Email" name="client_email">
+                                </div>
+                                <div class="col-md-6">
+                                  <input type="password" class="form-control" placeholder="Password" name="client_password" ngModel>
+                                </div>
+                                <div class="col-12">
+                                  <input type="text" class="form-control" placeholder="Address" name="client_address" ngModel>
+                                </div>
+                                <div class="col-md-6">
+                                  <input type="text" class="form-control" placeholder="Phone" name="client_phone" ngModel>
+                                </div>
+                                <div class="col-md-6">
+                                  <select id="inputState" class="form-select" name="client_country" ngModel>
+                                    <option selected>Choose country...</option>
+                                    <option *ngFor="let coun of country" value="{{coun.cntName}}">{{coun.cntName}}</option>
+                                  </select>
+                                </div>
+
+                                <div class="col-md-4 form_field_border">
+                                  <label class="mt-2" for="gridRadios1">Gender</label>
+                                  <hr>
+                                  
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="male" name="client_gender" ngModel checked>
+                                      <label class="form-check-label" for="gridRadios1">
+                                        Male
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="female" name="client_gender" ngModel>
+                                      <label class="form-check-label" for="gridRadios2">
+                                        Female
+                                      </label>
+                                    </div>
+                                  
+
+                                </div>
+                                <div  class="col-md-4 form_field_border">
+                                    <label class="mt-2" for="inputDate" >Date</label>
+                                    
+                                    <hr>
+                                    <div class="">
+                                      <input type="date" class="form-control" id="inputDate" name="client_dob" ngModel>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 form_field_border">
+                                  <label for="formFile" class="mt-2">Upload Profile Photo</label>
+                                  
+                                  <hr>
+                                  <div class="col-sm-10">
+                                    <input class="form-control" type="file" name="files" id="formFile" (change)="profileImg($event)">
+                                  </div>
+                                </div>
+                                <div class="text-center">
+                                  <button type="submit" class="btn btn-primary">Submit</button> 
+                                
+                                  <button type="reset" class="btn btn-secondary">Reset</button>
+                                </div>
+                              </form><!-- End No Labels Form -->
+
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div><!-- Client Registration From -->
+
+
+</main><!-- End #main -->
+
+
+
+

@@ -1,0 +1,52 @@
+<main id="main" class="main">
+  <!-- Recent Sales -->
+  <div class="col-12">
+    <div class="card recent-sales overflow-auto">
+
+      <div class="card-body" style="overflow-x:auto;">
+        <h5 class="card-title"> All Employees Status </h5>
+
+        <table class="table table-borderless datatable">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Employee Name</th>
+              <th scope="col">Department</th>
+              <th scope="col">Grade</th>
+              <th scope="col">Total Salery</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let emp of employeeList">
+              <th>{{emp.em_id}}</th>
+              <th>{{emp.em_name}}</th>
+              <th>{{emp.department.dep_name}}</th>
+              <th>{{emp.designation.salaryGrade.sg_name}}</th>
+              <th>{{emp.designation.salaryGrade.totalSalary}}</th>
+
+
+              <th>
+                <a class="btn btn-primary" routerLink="/emp_profile"> View Profile
+                </a>
+              </th>
+              <!-- Done not yet -->
+            </tr>
+
+
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+  </div><!-- End Recent Sales -->
+
+
+
+
+
+
+
+
+
+</main><!-- End #main -->

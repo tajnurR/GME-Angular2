@@ -1,0 +1,67 @@
+<main id="main" class="main">
+    <!-- New Employee Form  -->
+    <div class="col-12">
+        <div class="card recent-sales overflow-auto">
+
+
+            <div class="card-body">
+                <h5 class="card-title"> Set New Designation </h5>
+
+                <section class="section">
+                    <div class="row">
+                        <div class="col-lg-10 offset-1">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Add Job Designation in Department </h5>
+                                  <div style="background-color: rgba(0,255,0,0.4)" *ngIf="submited">
+                                    <p>New Department add succsfully</p>
+                                  </div>
+
+                                    <!-- New Employee Form Elements -->
+                                    <form (ngSubmit)="addNewDept()"  #deptF="ngForm">
+                                        <div class="row mb-3">
+                                            <label for="inputName" class="col-sm-3 col-form-label">Name</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="inputName" class="form-control" name="dep_name" ngModel>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="inputSortName" class="col-sm-3 col-form-label">Short Name</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="inputSortName" class="form-control" name="dep_SortName" ngModel>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="row mb-3">
+                                            <div class="col-sm-9">
+                                                <button type="submit" class="btn btn-primary">Add Department </button>
+                                            </div>
+                                        </div>
+
+                                    </form><!-- End General Form Elements -->
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div><!-- End Recent Sales -->
+
+
+
+
+
+
+
+
+
+</main><!-- End #main -->

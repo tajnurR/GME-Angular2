@@ -1,0 +1,145 @@
+
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Stitching Department Dashboard </h1>
+
+  </div><!-- End Page Title -->
+
+  <section class="section profile">
+    <div class="row">
+      <div class="col-xl-3 card">
+        <div class="p-2">
+          <div class="">
+            <form action="">
+              <div class=" mb-3">
+                <label class="fw-bolder "> Filter by </label>
+                <div class="">
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected> All Order</option>
+                    <option value="#"> On Process </option>
+                    <option value="#"> Completed </option>
+                  </select>
+                </div>
+              </div>
+            </form>
+
+            <h3> List of Order </h3>
+            <div *ngFor="let pr of deptOrder">
+              <div class="p-1 dashboard_order_list text-dark" (click)="getSingleDeptOrder(pr.clientOrder.coid)">
+                <div class=" "> Order ID : <span class="fw-bolder">{{pr.clientOrder.oder_title}} </span> </div>
+                <div *ngIf="pr.whD_states == 1" class=" "> Status : <span class="badge bg-primary" >On Working</span></div>
+                <div *ngIf="pr.whD_states == 2" class=" "> Status : <span class="badge bg-info" >Delivered</span></div>
+                <div *ngIf="pr.whD_states == 3" class=" "> Status : <span class="badge bg-success" >Complete</span></div>
+                <div *ngIf="pr.whD_states == 4" class=" "> Status : <span class="badge bg-success" >Rejected</span></div>
+              </div>
+            </div>
+          </div>  <!--    -->
+        </div> <!-- card -->
+      </div>    <!--  col-xl-3 card  -->
+
+
+
+
+      <div class="col-xl-6 ">
+        <div class="card p-2">
+          <div class="">
+            <div class="pt-2">
+
+              <div *ngIf="status" class="tab-pane fade show active profile-overview" id="profile-overview">
+                <h5 class="card-title">Oder Details</h5>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Order Title</div>
+                  <div class="col-lg-9 col-md-8">{{singleDeptOrder.clientOrder.oder_title}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Dress types</div>
+                  <div class="col-lg-9 col-md-8">{{singleDeptOrder.clientOrder.order_d_type}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Order Current Status</div>
+                  <div class="col-lg-6 col-md-6" *ngIf="singleDeptOrder.whD_states == 1"><span class="badge bg-success">On Working</span>
+                  </div>
+                  <div class="col-lg-6 col-md-6" *ngIf="singleDeptOrder.whD_states == 2"><span class="badge bg-info">Delivered</span></div>
+                  <div class="col-lg-6 col-md-6" *ngIf="singleDeptOrder.whD_states == 3"><span class="badge bg-primary">Complete</span>
+                  </div>
+                  <div class="col-lg-6 col-md-6" *ngIf="singleDeptOrder.whD_states == 4"><span class="badge bg-danger">Rejected</span>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Dress for</div>
+                  <div class="col-lg-9 col-md-8">{{singleDeptOrder.clientOrder.order_d_for}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Dress Size Details</div>
+                  <div class="col-lg-9 col-md-8">{{singleDeptOrder.clientOrder.oder_size}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Dress Color Details</div>
+                  <div class="col-lg-9 col-md-8">{{singleDeptOrder.clientOrder.oder_color}}</div>
+                </div>
+
+
+                <div class="row mb-3">
+                  <div class="">
+                    <button type="button" class="btn btn-primary" *ngIf="singleDeptOrder.whD_states == 1 "
+                            (click)="deliveryOrder(singleDeptOrder.clientOrder.coid)"> Delievery Order
+                    </button>
+                    <div *ngIf="singleDeptOrder.whD_states == 2 " class="alert alert-info"
+                         role="alert">
+                      Order is Delievered -- Wait for Admin responsed
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Bordered Tabs -->
+          </div>
+        </div>
+      </div><!-- col-xl-6 card -->
+    </div><!-- End Recent Activity -->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card recent-sales overflow-auto">
+
+          <div class="card-body" style="overflow-x:auto;">
+            <h5 class="card-title"> Dyeing Department Employees Status </h5>
+
+            <table class="table table-borderless datatable">
+              <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Start Time </th>
+                <th scope="col">End Time </th>
+                <th scope="col">Action </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th >isbd-23-25</th>
+                <th >Sheikh Sajib</th>
+                <th >08:30 am</th>
+                <th >04: 05 pm</th>
+                <th >
+                  <a class="btn btn-primary" > View Profile
+                  </a>
+                </th>
+                <!-- Done not yet -->
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main><!-- End #main -->
+

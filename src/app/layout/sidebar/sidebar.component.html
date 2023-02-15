@@ -1,0 +1,209 @@
+<!-- ======= Sidebar ======= -->
+
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link " routerLink="home">
+                <i class="bi bi-grid"></i>
+                <span> Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#hrm-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-hr"></i><span> HRM </span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="hrm-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a routerLink="all_emp">
+                        <i class="bi bi-circle"></i><span> All Employees</span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="create_emp">
+                        <i class="bi bi-circle"></i><span> Create New Employee</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="emp_profile">
+                        <i class="bi bi-circle"></i><span> Employee Profile </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="emp_update">
+                        <i class="bi bi-circle"></i><span> Update Employee Status </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="add_department">
+                        <i class="bi bi-circle"></i><span> Add Department </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="emp_add_desigin">
+                        <i class="bi bi-circle"></i><span> Add Designation </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="emp_add_grade">
+                        <i class="bi bi-circle"></i><span> Add Salary Grade </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="list_dep_sal_deg">
+                        <i class="bi bi-circle"></i><span> List Dep-Sal-Deg </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="emp_salary_report">
+                        <i class="bi bi-circle"></i><span> Monthy salary Report </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="emp_attendance">
+                        <i class="bi bi-circle"></i><span> Scan Attendance </span>
+                    </a>
+                </li>
+
+            </ul>
+        </li><!-- End HRM Nav -->
+
+
+
+        <!-- End Client Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#client-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-hr"></i><span> Client </span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="client-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a routerLink="client_list">
+                        <i class="bi bi-circle"></i><span> Clients List </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="client_reg_form">
+                        <i class="bi bi-circle"></i><span> Client Registration Form </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="client_order_list" >
+                        <i class="bi bi-circle"></i><span> Client Order List </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="client_order_form">
+                        <i class="bi bi-circle"></i><span> Client Order Form </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="client_profile">
+                        <i class="bi bi-circle"></i><span> Client Profile </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/client_update">
+                        <i class="bi bi-circle"></i><span> Update Client Status </span>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="country_list">
+                        <i class="bi bi-circle"></i><span> Add Country </span>
+                    </a>
+                </li>
+
+            </ul>
+        </li><!-- End Client Nav -->
+
+
+        <!-- Production Line Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Production Line </span><i
+                    class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a routerLink="production_dashboard">
+                        <i class="bi bi-circle"></i><span>Admin Notification </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="department_dashboard">
+                        <i class="bi bi-circle"></i><span> Department Dashboard </span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a routerLink="client_order_Details">
+                        <i class="bi bi-circle"></i><span>Client Order Details </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="production_requsition">
+                        <i class="bi bi-circle"></i><span>Production Requisition</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="cutting_dpet">
+                        <i class="bi bi-circle"></i><span> Cutting Process </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a routerLink="stitching_dpet">
+                        <i class="bi bi-circle"></i><span>Stitching Process</span>
+                    </a>
+                </li>
+
+                <li>
+                  <a routerLink="dyeing-dpet">
+                        <i class="bi bi-circle"></i><span> Dyeing department</span>
+                    </a>
+                </li>
+                <li>
+                  <a routerLink="washinbg-dpet">
+                        <i class="bi bi-circle"></i><span>Washing Process</span>
+                    </a>
+                </li>
+                <li>
+                  <a routerLink="qc_dpet">
+                        <i class="bi bi-circle"></i><span>Quality Testing</span>
+                    </a>
+                </li>
+                <li>
+                  <a routerLink="iron_dpet">
+                        <i class="bi bi-circle"></i><span>Ironing Process</span>
+                    </a>
+                </li>
+
+                <li>
+                  <a routerLink="packaging_dpet">
+                        <i class="bi bi-circle"></i><span> Packaging Process </span>
+                    </a>
+                </li>
+
+                <li>
+                  <a routerLink="shipment_dpet">
+                        <i class="bi bi-circle"></i><span> Ready for Shipment </span>
+                    </a>
+                </li>
+
+            </ul>
+        </li><!-- End Production Line Nav -->
+
+
+
+
+    </ul>
+
+</aside><!-- End Sidebar-->
+<router-outlet></router-outlet>

@@ -1,0 +1,41 @@
+
+.client_list_wrapper{
+    border: solid 1px rgba(72, 90, 244, .1);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 3px 3px 5px #eee;
+    transition: 0.5s;
+}
+
+.client_list_wrapper:hover {
+    scale: 1.05;
+    background-color :rgba(72, 90, 244, .2);
+    cursor: pointer;
+}
+
+.client_list_img{
+    width: 100px;
+    height: 100px;
+    border: solid 0px #8c5cfc44; 
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #eee;
+
+}
+
+.client_list_status{
+    line-height: 7px;
+    margin-top: 5px;
+}
+
+.client_list_name{
+    font-size: 18pt;
+    font-weight: 700;
+}
+.client_country{
+    background-color: #7f4afaaa;
+    line-height: 10px;
+    padding: 4px;
+    border-radius: 5px;
+    color:aliceblue;
+}
