@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WebcamImage } from 'ngx-webcam';
-import { Observable, Subject } from 'rxjs';
+import {AttendServiceService} from "./attend-service.service";
 
 @Component({
   selector: 'app-emp-attendance-live',
@@ -8,27 +7,19 @@ import { Observable, Subject } from 'rxjs';
   styleUrls: ['./emp-attendance-live.component.css']
 })
 export class EmpAttendanceLiveComponent implements OnInit {
+  // ng update @angular/cli @angular/core --allow-dirty --force
+  constructor(
+      private attService: AttendServiceService
+  ) { }
 
-  // latest snapshot
-  public webcamImage: WebcamImage;
-
-  // webcam snapshot trigger
-  private trigger: Subject<void> = new Subject<void>();
-  triggerSnapshot(): void {
-    this.trigger.next();
-  }
-  handleImage(webcamImage: WebcamImage): void {
-    console.info('received webcam image', webcamImage);
-    this.webcamImage = webcamImage;
-  }
-
-  public get triggerObservable(): Observable<void> {
-    return this.trigger.asObservable();
-  }
-
-  constructor() { }
-
+  impProfile:any;
   ngOnInit(): void {
   }
-
+  onResult(result:string){
+    this.attService.setattden(result).subscribe(
+        data => {this.impProfile =data
+          console.log(this.impProfile)
+        }
+    )
+  }
 }

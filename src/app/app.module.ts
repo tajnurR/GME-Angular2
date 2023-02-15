@@ -31,8 +31,7 @@ import { ListDepSalDegComponent } from './page/employee/list-dep-sal-deg/list-de
 import { EmpAddDesigComponent } from './page/employee/emp-add-desig/emp-add-desig.component';
 import { ProductionDashboardComponent } from './page/production/production-dashboard/production-dashboard.component';
 import { DepartmentDashboardComponent } from './page/production/department-dashboard/department-dashboard.component';
-import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode'
-import { WebcamModule } from 'ngx-webcam';
+
 
 
 import { CuttingDepartmentComponent } from './page/production/cutting-department/cutting-department.component';
@@ -43,6 +42,7 @@ import { QualityControlDepartmentComponent } from './page/production/quality-con
 import { IronDepartmentComponent } from './page/production/iron-department/iron-department.component';
 import { PackagingDepartmentComponent } from './page/production/packaging-department/packaging-department.component';
 import { InspectionOrderShipmentComponent } from './page/production/inspection-order-shipment/inspection-order-shipment.component';
+import {ZXingScannerModule} from "@zxing/ngx-scanner";
 
 
 
@@ -89,9 +89,7 @@ import { InspectionOrderShipmentComponent } from './page/production/inspection-o
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxScannerQrcodeModule,
-    WebcamModule
-
+    ZXingScannerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
