@@ -1,33 +1,3 @@
-<!-- <script type="text/javascript">
-    $(document).ready(function () {
-
-        $('#dpetl').change(function () {
-            // alert($("#cars").val())
-            var stateId = $("#dpetl").val();
-
-            $.ajax({
-                type: 'GET',
-                url: 'http://localhost:8181/designation/' + stateId,
-                data: "json",
-                contentType: "application/json",
-                success: function (result) {
-                    var result = JSON.parse(result);
-
-                    var s = '';
-                    for (var i = 0; i < result.length; i++) {
-
-                        s += '<option value="' + result[i].desgi_id + '">' + result[i].desgi_title + '</option>';
-                    }
-                    $('#desigf').html(s);
-                }
-            });
-        });
-
-    });
-
-
-</script> -->
-
 
 <main id="main" class="main">
 
@@ -50,26 +20,6 @@
 
                                     <!-- Employee Necessary Form Elements -->
                                     <form (ngSubmit)="addNewEmp()" #employeeForm="ngForm">
-
-                                        <!-- <div class="row mb-3">
-                                            <label class="col-sm-3 col-form-label">Emp ID</label>
-                                            <div class="col-sm-9">
-                                                <input type="hidden" class="form-control"
-                                                    value="DEP-GRADE-Year-SerialNo " disabled >
-                                                Example = eng-10-23-05 // Engineering Depratment Join in 2023 as 5th Employee
-                                            </div>
-                                        </div> -->
-
-                                        <div class="row mb-3">
-                                            <label class="col-sm-3 col-form-label">Employee ID</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" value="DEP-GRADE-Year-SerialNo "
-                                                    name="em_employeeID" ngModel>
-                                                <!-- Example = eng-10-23-05 // Engineering Depratment Join in 2023 as 5th Employee -->
-                                            </div>
-                                        </div>
-
-
                                         <div class="row mb-3">
                                             <label for="inputText" class="col-sm-3 col-form-label">Employee
                                                 Name </label>
@@ -92,7 +42,7 @@
                                             <label for="inputNumber" class="col-sm-3 col-form-label">National ID
                                                 No</label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="em_nid" ngModel>
+                                                <input type="text" class="form-control" name="em_nid" ngModel>
                                             </div>
                                         </div>
 
@@ -170,7 +120,7 @@
                                         <div class="row mb-3">
                                             <label for="inputText" class="col-sm-3 col-form-label">Spouse NID </label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" name="em_spouseNID"
+                                                <input type="text" class="form-control" name="em_spouseNID"
                                                     ngModel>
                                             </div>
                                         </div>
@@ -187,7 +137,7 @@
                                             <label for="inputNumber" class="col-sm-3 col-form-label">Upload
                                                 Image </label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="file" id="formdFile" name="em_profileImg"
+                                                <input (change)="getImg($event)" class="form-control" type="file" id="formdFile" name="em_profileImg"
                                                     ngModel>
                                             </div>
                                         </div>
@@ -198,14 +148,6 @@
                                                 <input type="date" class="form-control" name="em_joiningDate" ngModel>
                                             </div>
                                         </div>
-
-                                        <!--                                        <div class="row mb-3">-->
-                                        <!--                                            <label for="inputNumber" class="col-sm-3 col-form-label">Upload-->
-                                        <!--                                                Signature </label>-->
-                                        <!--                                            <div class="col-sm-9">-->
-                                        <!--                                                <input class="form-control" type="file" id="formFile" name="simg">-->
-                                        <!--                                            </div>-->
-                                        <!--                                        </div>-->
 
                                         <div class="row mb-3">
                                             <label for="inputPassword" class="col-sm-3 col-form-label">Present
@@ -249,18 +191,6 @@
                                             </div>
                                         </div>
 
-
-                                        <!--                                        <div class="row mb-3">-->
-                                        <!--                                            <label class="col-sm-3 col-form-label">Salary Grade</label>-->
-                                        <!--                                            <div class="col-sm-9">-->
-                                        <!--                                                <select class="form-select" aria-label="Default select example" th:field="*{saleyGrade}">-->
-                                        <!--                                                    <option  th:each="s:${salaryList}"  th:value="${s.sg_id}"-->
-                                        <!--                                                             th:text="${s.sg_name}" >Select Grade</option>-->
-
-
-                                        <!--                                                </select>-->
-                                        <!--                                            </div>-->
-                                        <!--                                        </div>-->
 
                                         <div class="row mb-3">
                                             <label for="inputEmail" class="col-sm-3 col-form-label">Email (If

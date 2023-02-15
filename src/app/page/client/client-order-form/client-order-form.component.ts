@@ -44,8 +44,6 @@ export class ClientOrderFormComponent implements OnInit {
       this.designImg = reader.result;
       this.oder_s_img = event.target.files[0];
     }
-
-
   }
 
 
