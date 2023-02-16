@@ -1,0 +1,1 @@
+var p_bar=document.querySelectorAll(".progress_bar li"),p_bar_before=document.querySelectorAll(".progress_bar li::before"),p_bar_after=document.querySelectorAll(".progress_bar li::after");p_bar.forEach(e=>{e.onclick=function(r){e.classList.contains("active")?e.classList.remove("active"):e.classList.add("active")}});

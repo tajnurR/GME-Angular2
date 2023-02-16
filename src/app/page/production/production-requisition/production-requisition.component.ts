@@ -16,6 +16,7 @@ export class ProductionRequisitionComponent implements OnInit {
   deptOrder: any[]=[]
   singleDeptOrder: any;
   status = false;
+  allemp:any[];
 
   ngOnInit(): void {
     this.getAllorder();
@@ -46,5 +47,10 @@ export class ProductionRequisitionComponent implements OnInit {
   }
 
 
+  getAllemp(epID:number){
+    this.PRservice.getAllDeptEmp(epID).subscribe(
+      data=>this.allemp = data
+    )
+  }
 
 }

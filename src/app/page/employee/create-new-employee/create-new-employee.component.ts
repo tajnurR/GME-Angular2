@@ -57,12 +57,8 @@ export class CreateNewEmployeeComponent implements OnInit {
     console.log(this.empSave)
     this.empSer.createEmp(this.empSave).subscribe(
       data => {
-        this.empSer.uploadOderImg(this.oder_s_img).subscribe(
-            data =>{
               this.submited = true;
               this.employeeForm.reset()
-            }
-        )
       }
     )
     this.gotoEmpList();
@@ -92,6 +88,7 @@ export class CreateNewEmployeeComponent implements OnInit {
 
   getImg(event: any){
     this.oder_s_img = event.target.files[0];
+    console.log(this.oder_s_img)
     }
 
 }

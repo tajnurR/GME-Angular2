@@ -22,5 +22,8 @@ export class PrServiceService {
     return this.http.patch(baseUrl+"/prd_delivary/"+ordId, ordId)
   }
 
+  getAllDeptEmp(deptId:number):Observable<any[]>{
+      return this.http.get<any[]>(baseUrl+"/get_emp_bydept/"+deptId)
+  }
 
 }

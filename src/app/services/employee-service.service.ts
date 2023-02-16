@@ -71,10 +71,11 @@ export class EmployeeServiceService {
     return this.http.put<any>(baseUrl+"update_salary_grade/", salaryGrade);
   }
 
-  uploadOderImg(file: File){
-    const formData: FormData = new FormData();
-    formData.append('file', file);
-    return this.http.post(baseUrl+"/upload_emp_img", formData);
-  }
+  // uploadOderImg(file: File){
+  //   const formData: FormData = new FormData();
+  //   formData.append('file', file);
+  //   console.log(formData)
+  //   return this.http.post(baseUrl+"/upload_emp_img", file);
+  // }
 
 }
