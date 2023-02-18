@@ -26,4 +26,8 @@ export class PrServiceService {
       return this.http.get<any[]>(baseUrl+"/get_emp_bydept/"+deptId)
   }
 
+  getAtiveOrder(orderId: number):Observable<any[]>{
+    return this.http.get<any>(baseUrl+"/get_emp_isass/"+orderId)
+  }
+
 }

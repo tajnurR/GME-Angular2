@@ -16,10 +16,23 @@ export class ProductionRequisitionComponent implements OnInit {
   deptOrder: any[]=[]
   singleDeptOrder: any;
   status = false;
-  allemp:any[];
+  allemp:any[]=[];
+  allAOrder:any={
+    "inv_id":'',
+    "inv_status": '',
+    "employees":{
+      "em_id":""
+    },
+    "clientOrder":{
+      "coid":""
+    }
+  };
+
+  
 
   ngOnInit(): void {
     this.getAllorder();
+    this.getAllemp(1)
   }
 
   getAllorder(){
@@ -32,8 +45,19 @@ export class ProductionRequisitionComponent implements OnInit {
     )
   }
 
+  freeEmp:any[]=[];
   getSingleDeptOrder(orderId: number){
+    console.log(orderId)
     this.singleDeptOrder = this.deptOrder.find(ord => ord.clientOrder.coid == orderId);
+
+    this.PRservice.getAtiveOrder(orderId).subscribe(
+      data=>{this.allAOrder = data;
+        this.freeEmp = this.allemp.filter(x=>x.em_id == this.allAOrder.employees.em_id);
+      }
+    )
+
+    
+    console.log(this.freeEmp)
   }
 
   deliveryOrder(orderId: number){
@@ -49,8 +73,15 @@ export class ProductionRequisitionComponent implements OnInit {
 
   getAllemp(epID:number){
     this.PRservice.getAllDeptEmp(epID).subscribe(
-      data=>this.allemp = data
+      data=>{
+        this.allemp = data;
+        console.log(this.allemp)
+      }
     )
+  }
+
+  getActiveOrder(orid:number){
+    
   }
 
 }
